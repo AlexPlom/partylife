@@ -1,0 +1,72 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in oklab, var(--bg) 92%, white);
+  border-bottom: 3px solid var(--ink);
+  backdrop-filter: blur(8px);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+.brand {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand__mark {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  background: var(--card);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.brand__name {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 18px;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  font-weight: 700;
+}
+
+.nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 0;
+  border: 2px solid transparent;
+}
+
+.nav a:hover {
+  background: color-mix(in oklab, var(--bg) 60%, white);
+  border-color: color-mix(in oklab, var(--ink) 22%, transparent);
+}
+
+.nav a.is-active {
+  background: var(--card);
+  border-color: var(--ink);
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 520px) {
+  .brand__name {
+    font-size: 16px;
+  }
+}

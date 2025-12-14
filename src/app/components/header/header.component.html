@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" routerLink="/">
+      <span class="brand__mark" aria-hidden="true">JF</span>
+      <span class="brand__name">Just Fun</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }"
+        >Decks</a
+      >
+      <a routerLink="/about" routerLinkActive="is-active">About</a>
+    </nav>
+  </div>
+</header>
+

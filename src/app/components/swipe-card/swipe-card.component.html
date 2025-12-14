@@ -1,0 +1,15 @@
+<div
+  #card
+  class="card"
+  [style.transform]="transformStyle()"
+  [style.opacity]="opacity()"
+  (pointerdown)="onPointerDown($event)"
+  (pointermove)="onPointerMove($event)"
+  (pointerup)="onPointerUp($event)"
+  (pointercancel)="onPointerCancel()"
+  role="group"
+  aria-label="Question card"
+>
+  <p class="card__text">{{ question }}</p>
+  <p class="card__hint" aria-hidden="true">Swipe left for next • Swipe right for prev</p>
+</div>

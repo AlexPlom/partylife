@@ -1,0 +1,49 @@
+<main class="container page" [ngClass]="themeClass()">
+  @if (deck(); as d) {
+    <section class="top">
+      <div class="top__title">
+        <button class="backlink" type="button" (click)="back()">← Back to decks</button>
+        <div class="titleRow">
+          <h1 class="title">{{ d.title }}</h1>
+          <div class="tip">
+            <button class="tip__btn" type="button" aria-label="Deck description">?</button>
+            <div class="tip__bubble" role="note">{{ d.description }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="top__meta">
+        <div class="progress" aria-label="Progress">{{ progressText() }}</div>
+        <div class="controls">
+          <button class="btn btn--ghost" type="button" (click)="back()">Back</button>
+          <button class="btn" type="button" (click)="deckService.shuffle()">Shuffle</button>
+          <button class="btn" type="button" (click)="deckService.restart()">Restart</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stage" aria-label="Deck viewer">
+      <jf-swipe-card
+        class="stage__card"
+        [question]="question()"
+        [canPrev]="canPrev()"
+        [canNext]="canNext()"
+        (swipe)="onSwipe($event)"
+      />
+    </section>
+
+    <section class="bottom" aria-label="Navigation">
+      <button class="btn btn--ghost" type="button" (click)="deckService.prev()" [disabled]="!canPrev()">
+        Prev
+      </button>
+      <button class="btn btn--primary" type="button" (click)="deckService.next()" [disabled]="!canNext()">
+        Next
+      </button>
+    </section>
+  } @else {
+    <section class="loading">
+      <p>Loading deck…</p>
+      <a routerLink="/" class="btn btn--ghost">Back to decks</a>
+    </section>
+  }
+</main>

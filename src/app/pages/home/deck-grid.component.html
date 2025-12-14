@@ -1,0 +1,41 @@
+<main class="container page">
+  <section class="hero">
+    <p class="kicker">A tiny deck app for big conversations</p>
+    <h1 class="hero__title">Pick a deck. Swipe for the next question.</h1>
+    <p class="hero__sub">
+      Clean, fast, and front-end only. Great for friends, teams, dates, and family
+      dinners.
+    </p>
+  </section>
+
+  <section class="grid" [ngClass]="gridClass()">
+    @for (deck of decks; track deck.id) {
+      <button
+        type="button"
+        class="deck"
+        [ngClass]="[
+          'theme--' + deck.theme,
+          picked() === deck.id ? 'is-picked' : '',
+          leaving() && picked() !== deck.id ? 'is-faded' : ''
+        ]"
+        (click)="onPick(deck)"
+      >
+        <div class="deck__top">
+          <span class="deck__label">{{ deck.title }}</span>
+          <div class="deck__meta">
+            <span class="deck__hint">{{ deck.questions.length }} questions</span>
+            <span class="deck__tip" aria-hidden="true">
+              <span class="deck__tipBtn">?</span>
+              <span class="deck__popup" role="note">{{ deck.description }}</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="deck__body">
+          <span class="sr-only">{{ deck.description }}</span>
+          <p class="deck__micro">Click to open →</p>
+        </div>
+      </button>
+    }
+  </section>
+</main>
